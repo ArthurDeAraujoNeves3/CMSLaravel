@@ -19,9 +19,19 @@
     <main class="">
 
         <form class="Form" method="post">
+
+            @csrf
             
             @component("Components.layout.LoginHeader")
             @endcomponent
+
+            @if ( session("error") )
+                <div class="alert alert-danger" role="alert">
+
+                    {{session("error")}}
+
+                </div>
+            @endif {{--Caixa de erro--}}
             
             <div class="mb-3">
 

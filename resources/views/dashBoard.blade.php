@@ -8,6 +8,12 @@
 </head>
 <body>
 
+    @if ( session("success") )
+
+        <p>sucesso</p>
+
+    @endif
+    
     <p>Dashboard</p>
     
 </body>
