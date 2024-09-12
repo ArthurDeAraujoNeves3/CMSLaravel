@@ -18,7 +18,8 @@ class DatabaseSeeder extends Seeder
             HeroSeeder::class,
             AboutMeSeeder::class,
             ExperiencesSeeder::class,
-            ProjectsSeeder::class
+            ProjectsSeeder::class,
+            AdminSeeder::class
             
         ]);
 

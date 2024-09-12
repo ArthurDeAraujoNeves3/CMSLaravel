@@ -21,15 +21,22 @@ class LoginRequest extends FormRequest
         return [
             
             "email" => "required|email",
-            "password" => "required|max_digits:255"
+            "password" => "required|min_digits:8|max_digits:255"
 
         ];
     }
+    
+    // Mensagens de retorno
     public function messages() {
 
         return [
 
-            "error" => "Erro no login",
+            "email.required" => "Email não inserido",
+            "email.email" => "Email não é válido!",
+            "email.max" => "Tamanho máximo de 255",
+            "password.required" => "Senha não inserida",
+            "password.max" => "Tamanho máximo de 60 caracteres",
+            "password.min" => "Tamanho mínimo de 8 caracteres"
 
         ];
 

@@ -26,29 +26,43 @@
             @endcomponent
 
             @if ( session("error") )
+
                 <div class="alert alert-danger" role="alert">
 
                     {{session("error")}}
-
+                    
                 </div>
+
             @endif {{--Caixa de erro--}}
-            
+
             <div class="mb-3">
 
                 <label for="exampleInputEmail1" class="form-label">Email</label>
-                <input type="email" class="form-control" name="email" id="exampleInputEmail1" aria-describedby="emailHelp">
-                
-            </div> {{--Email--}}
+                <input type="email" class="{{ $errors->has("email") ? 'bg-danger' : '' }} form-control" name="email" id="exampleInputEmail1" aria-describedby="emailHelp">
 
+                @error("email")
+                
+                    <p class="text-danger m-0">{{ $message }}</p>
+
+                @enderror {{---Mensagem de erro--}}
+            
+            </div> {{--Email--}}
+            
             <div class="mb-3">
 
                 <label for="exampleInputPassword1" class="form-label">Senha</label>
-                <input type="password" class="form-control" name="password" id="exampleInputPassword1">
+                <input type="password" class="{{ $errors->has("password") ? 'bg-danger' : '' }} form-control" name="password" id="exampleInputPassword1">
+
+                @error("password")
+                
+                    <p class="text-danger m-0">{{ $message }}</p>
+
+                @enderror {{---Mensagem de erro--}}
 
             </div> {{--Senha--}}
 
             <button type="submit" class="btn btn-primary">Login</button>
-
+            
         </form>
 
     </main>
