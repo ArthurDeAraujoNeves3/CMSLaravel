@@ -1,0 +1,11 @@
+:root {
+
+    --theme: blue;
+    --bg: black;
+    --title: white;
+    --text: white;
+    --subTitle: gray;
+
+    --rounded: 20px;
+
+}
