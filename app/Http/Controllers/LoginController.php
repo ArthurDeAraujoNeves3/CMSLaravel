@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\LoginRequest;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -15,10 +16,14 @@ class LoginController extends Controller {
         return view("login", $this->data);
 
     }
-    public function verify(Request $r) {
+    public function verify(LoginRequest $r) {
 
-        $email = $r->post()["email"];
-        $password = $r->post()["password"];
+        $inputs = $r->validated();
+
+        dd($inputs);
+
+        $email = $inputs["email"];
+        $password = $inputs["password"];
 
         // Realizando login
         if ( Auth::attempt(["email" => $email,"password" => $password]) ) {
