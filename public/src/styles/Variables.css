@@ -1,11 +1,12 @@
 :root {
 
-    --theme: blue;
-    --bg: black;
-    --title: white;
-    --text: white;
-    --subTitle: gray;
+    /* Admin */
+    --theme: #088395;
+    --bg: #f2f4f7;
+    --details: #e1e3e6;
+    --text: #33372C;
 
-    --rounded: 20px;
+    /* Geral */
+    --rounded: 8px;
 
 }

@@ -10,4 +10,33 @@
 
 }
 
+@font-face {
 
+    font-family: "Title";
+    src: url("./assets/fonts/Title/OpenSans-Bold.ttf");
+
+}
+@font-face {
+
+    font-family: "Text";
+    src: url("./assets/fonts/Text/OpenSans-Medium.ttf");
+
+}
+
+body {
+
+    background-color: var(--bg);
+    font-family: "Text";
+    color: var(--text);
+    overflow-x: hidden;
+
+}
+
+/* Classes do Bootstrap */
+button[type=submit] {
+
+    width: 100%;
+    background-color: var(--theme) !important;
+    border-color: var(--theme);
+
+}
