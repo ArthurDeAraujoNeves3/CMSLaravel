@@ -38,11 +38,11 @@
             <div class="mb-3">
 
                 <label for="exampleInputEmail1" class="form-label">Email</label>
-                <input type="email" class="{{ $errors->has("email") ? 'bg-danger' : '' }} form-control" name="email" id="exampleInputEmail1" aria-describedby="emailHelp">
+                <input type="email" class="{{ $errors->has("email") ? 'inputError' : '' }} form-control" name="email" id="email" aria-describedby="emailHelp">
 
                 @error("email")
                 
-                    <p class="text-danger m-0">{{ $message }}</p>
+                    <p class="textError m-0">{{ $message }}</p>
 
                 @enderror {{---Mensagem de erro--}}
             
@@ -51,21 +51,23 @@
             <div class="mb-3">
 
                 <label for="exampleInputPassword1" class="form-label">Senha</label>
-                <input type="password" class="{{ $errors->has("password") ? 'bg-danger' : '' }} form-control" name="password" id="exampleInputPassword1">
+                <input type="password" class="{{ $errors->has("password") ? 'inputError' : '' }} form-control" name="password" id="password">
 
                 @error("password")
                 
-                    <p class="text-danger m-0">{{ $message }}</p>
+                    <p class="textError m-0">{{ $message }}</p>
 
                 @enderror {{---Mensagem de erro--}}
 
             </div> {{--Senha--}}
 
-            <button type="submit" class="btn btn-primary">Login</button>
+            <button onclick="verifyInputs()" type="submit" class="btn btn-primary">Login</button>
             
         </form>
 
     </main>
+
+    <script src="{{ URL::asset("src/scripts/js/Login/main.js") }}"></script>
 
 </body>
 

@@ -40,3 +40,15 @@ button[type=submit] {
     border-color: var(--theme);
 
 }
+
+.inputError {
+
+    border-color: var(--error) !important;
+
+}
+.textError {
+
+    color: var(--error);
+    font-size: 12px;
+
+}

@@ -33,7 +33,7 @@ class LoginRequest extends FormRequest
 
             "email.required" => "Email não inserido",
             "email.email" => "Email não é válido!",
-            "email.max" => "Tamanho máximo de 255",
+            "email.max" => "Tamanho máximo de 255 caracteres",
             "password.required" => "Senha não inserida",
             "password.max" => "Tamanho máximo de 60 caracteres",
             "password.min" => "Tamanho mínimo de 8 caracteres"
