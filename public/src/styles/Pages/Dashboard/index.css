@@ -1,0 +1,73 @@
+header {
+
+    background-color: var(--theme);
+    height: 50px;
+
+}
+/* Logo */
+header > img {
+
+    width: 40px;
+
+}
+
+main {
+
+    display: flex;
+    align-items: center;
+    background-color: var(--theme);
+    height: 100vh;
+}
+
+.SectionBtn {
+
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    width: 100%;
+    height: 50px;
+    padding: 0px 10px;
+    border-radius: var(--rounded);
+    background-color: var(--theme);
+    transition: 0.2s;
+    cursor: pointer;
+
+}
+.SectionBtn:hover {
+
+    filter: brightness(0.9);
+
+}
+.SectionBtn > p {
+
+    color: var(--bg);
+
+}
+
+.Aside {
+
+    max-width: 200px;
+    min-width: 200px;
+    height: 100%;
+    background-color: var(--theme);
+    padding: 0px 10px;
+
+}
+
+.Hero {
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    height: 100%;
+    background-color: var(--bg);
+    border-top-left-radius: var(--rounded);
+    padding: 10px;
+}
+.TextPortfolio {
+
+    color: var(--bg);
+
+}

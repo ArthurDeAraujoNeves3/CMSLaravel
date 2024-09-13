@@ -52,7 +52,7 @@
 
                 <label for="exampleInputPassword1" class="form-label">Senha</label>
                 <input type="password" class="{{ $errors->has("password") ? 'inputError' : '' }} form-control" name="password" id="password">
-
+                
                 @error("password")
                 
                     <p class="textError m-0">{{ $message }}</p>

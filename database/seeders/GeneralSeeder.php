@@ -17,7 +17,7 @@ class GeneralSeeder extends Seeder
             "id" => (string) Str::uuid(),
             "name" => "Seu nome aqui",
             "bgColor" => "#0e0e0e",
-            "colorTheme" => "0B2F9F"
+            "colorTheme" => "#0B2F9F"
 
        ]);
 

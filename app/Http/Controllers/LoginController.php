@@ -20,8 +20,6 @@ class LoginController extends Controller {
 
         $inputs = $r->validated();
 
-        dd($inputs);
-
         $email = $inputs["email"];
         $password = $inputs["password"];
 
