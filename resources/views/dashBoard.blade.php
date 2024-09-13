@@ -44,27 +44,50 @@
 
         </aside> {{--NavBar--}}
 
-        <section class="Hero" style="background-color: {{ $bgColor }};">
+        <section class="Hero">
 
-            <div class="Textos">
-
-                <div class="d-flex flex-column">
-
-                    <p class="TextPortfolio m-0">{{ $Hero["welcomeMessage"] }}</p>
-                    <p class="Name m-0" style="color: {{ $colorTheme }};">{{ $name }}</p>
-                    <p class="TextPortfolio m-0">{{ $Hero["expertise"] }}</p>
-
-                </div>
-
-                <a href="{{ $Hero['linkedinUrl'] }}" class="btn btn-primary" style="background-color: {{ $colorTheme }}; border-color: {{ $colorTheme }};">Linkedin</a>
+            <form action="{{route("dashboard.update", $Hero["id"])}}" method="post">
+                @method("put")
+                @csrf
                 
-            </div> {{--Textos--}}
+                <button type="submit" class="btn btn-primary">Salvar alterações</button>
 
-            <figure>
+                <section class="d-flex align-items-center gap-2">
+                
+                    <div class="mb-3">
 
-                <img src="{{ $Hero['imageUrl'] }}" alt="Eu" draggable="false" loading="lazy" />
+                        <label for="exampleInputEmail1" class="form-label">Mensagem de boas vindas</label>
+                        <input type="text" name="welcomeMessage" class="form-control" id="welcomeMessage" value="{{ $Hero["welcomeMessage"] }}" aria-describedby="emailHelp"/>
+                        
+                    </div> {{--Mensagem de boas vindas--}}
 
-            </figure>
+                    <div class="mb-3">
+
+                        <label for="exampleInputEmail1" class="form-label">Especialidade</label>
+                        <input type="text" name="expertise" class="form-control" id="expertise" value="{{ $Hero["expertise"] }}" aria-describedby="emailHelp"/>
+                        
+                    </div> {{--Mensagem de boas vindas--}}
+                    
+                </section> {{--Inputs--}}
+
+                <section>
+
+                    <div class="h6">Imagem</div>
+                    <article>
+
+                        <figure>
+
+                            <img src="{{ $Hero['imageUrl'] }}" alt="Ilustração do Hero" draggable="false" loading="lazy" />
+
+                        </figure>
+
+                        <input type="file" />
+
+                    </article>
+
+                </section> {{--Imagem--}}
+
+             </form>
 
         </section> {{--Conteúdo principal--}}
 

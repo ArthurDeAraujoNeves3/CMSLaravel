@@ -58,7 +58,6 @@ main {
 .Hero {
 
     display: flex;
-    align-items: center;
     justify-content: space-between;
     width: 100%;
     height: 100%;
@@ -69,5 +68,18 @@ main {
 .TextPortfolio {
 
     color: var(--bg);
+
+}
+
+.input, .inputTheme {
+
+    background-color: transparent;
+    border: none;
+    color: var(--bg);
+    
+}
+.input, .inputTheme:focus {
+
+    outline: none;
 
 }

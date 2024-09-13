@@ -51,8 +51,10 @@ class DashboardController extends Controller {
         //
     }
 
-    public function update(Request $request, string $id) {
-        //
+    public function update(Request $r, string $id) {
+        
+        dd($r->post());
+
     }
 
     public function destroy(string $id) {
