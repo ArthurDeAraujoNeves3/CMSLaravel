@@ -1,0 +1,8 @@
+/* Classes do Bootstrap */
+button[type=submit] {
+
+    width: 100%;
+    background-color: var(--theme) !important;
+    border-color: var(--theme);
+
+}

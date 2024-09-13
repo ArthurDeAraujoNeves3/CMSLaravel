@@ -9,6 +9,7 @@
 
     <link rel="stylesheet" href="{{ URL::asset('src/bootstrap/css/bootstrap.min.css') }}"> <!--Bootstrap-->
     <link rel="stylesheet" href="{{ URL::asset('src/index.css') }}"> <!--Index-->
+    <link rel="stylesheet" href="{{ URL::asset('src/bootstrap.css') }}"> <!--Bootstrap customizável-->
     <link rel="stylesheet" href="{{ URL::asset('src/styles/Pages/Login/Loginstyle.css') }}"> <!--Login-->
     <link rel="stylesheet" href="{{ URL::asset('src/styles/Pages/Login/LoginHeaderstyles.css') }}">
 

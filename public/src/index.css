@@ -10,6 +10,7 @@
 
 }
 
+/* Dashboard */
 @font-face {
 
     font-family: "Title";
@@ -23,6 +24,20 @@
 
 }
 
+/* Portfólio */
+@font-face {
+
+    font-family: "TitleP";
+    src: url("./assets/fonts/Title/OpenSans-Bold.ttf");
+
+}
+@font-face {
+
+    font-family: "TextP";
+    src: url("./assets/fonts/Title/OpenSans-Bold.ttf");
+
+}
+
 body {
 
     background-color: var(--bg);
@@ -32,15 +47,7 @@ body {
 
 }
 
-/* Classes do Bootstrap */
-button[type=submit] {
-
-    width: 100%;
-    background-color: var(--theme) !important;
-    border-color: var(--theme);
-
-}
-
+/* Errors */
 .inputError {
 
     border-color: var(--error) !important;
