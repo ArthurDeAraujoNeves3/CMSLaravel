@@ -81,7 +81,7 @@
 
                         </figure>
 
-                        <input type="file" />
+                        <input type="file" name="image" />
 
                     </article>
 

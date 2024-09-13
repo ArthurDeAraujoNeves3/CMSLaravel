@@ -1,12 +1,12 @@
 <?php
 
-use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\PortfolioController;
 use Illuminate\Support\Facades\Route;
 
 // Página do cliente
-Route::resource("/", HomeController::class);
+Route::resource("/", PortfolioController::class);
 
 // Login
 Route::controller(LoginController::class)->group(function () {
@@ -17,4 +17,4 @@ Route::controller(LoginController::class)->group(function () {
 });
 
 //Página do admin
-Route::resource("/dashboard", DashboardController::class)->middleware("auth");
+Route::resource("/dashboard", HomeController::class)->middleware("auth");

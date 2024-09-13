@@ -2,45 +2,72 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\DashboardRequest;
+use App\Http\Requests\HeroRequest;
+use App\Models\General;
+use App\Models\Hero;
+use App\Models\Sections;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller {
 
     private array $data = array();
+    
+    public function __construct() {
 
-    public function index() {
-
-        return view("home", $this->data);
+        $General = General::all()->toArray();
+        // dd($General);
+        $this->data["name"] = $General[0]["name"];
+        $this->data["bgColor"] = $General[0]["bgColor"];
+        $this->data["colorTheme"] = $General[0]["colorTheme"];
         
     }
 
-    public function create()
-    {
+    public function index() {
+
+        // $this->data["Hero"] = Hero::all()->toArray();
+        $Hero = Hero::all()->toArray();
+
+        // dd($Hero);
+
+        $this->data["Hero"] = $Hero[0];
+        $this->data["sections"] = Sections::all()->toArray();
+        
+        return view("dashBoard", $this->data);
+
+    }
+
+    public function create() {
         //
     }
 
-    public function store(Request $request)
-    {
+    public function store(Request $request) {
         //
     }
 
-    public function show(string $id)
-    {
+    public function show(string $id) {
         //
     }
 
-    public function edit(string $id)
-    {
+    public function edit(string $id) {
         //
     }
 
-    public function update(Request $request, string $id)
-    {
-        //
+    public function update(HeroRequest $r, string $id) {
+        
+        dd($r->post());
+        
+        Hero::select()->where("id", "=", $id)->update([
+
+            "welcomeMessage" => "",
+            "expertise" => "",
+            "imageUrl" => "",
+
+        ]);
+
     }
 
-    public function destroy(string $id)
-    {
+    public function destroy(string $id) {
         //
     }
 }
