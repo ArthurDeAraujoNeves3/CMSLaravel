@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('sections', function (Blueprint $table) {
             
-            $table->string("id", 36);
+            $table->uuid("id");
             $table->string("name", 100);
 
         });

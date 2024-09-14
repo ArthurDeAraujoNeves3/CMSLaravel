@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('about_me', function (Blueprint $table) {
             
-            $table->string("id", 36);
+            $table->uuid("id");
             $table->string("location", 80);
             $table->string("description", 500);
             $table->string("pdf");

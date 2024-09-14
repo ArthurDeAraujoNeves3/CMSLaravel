@@ -6,21 +6,15 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Dashboard</title>
 
-    <link rel="stylesheet" href="{{ URL::asset("src/bootstrap/css/bootstrap.min.css") }}"> <!--Bootstrap-->
-    <link rel="stylesheet" href="{{ URL::asset("src/index.css") }}"> <!--Index-->
+    <link rel="stylesheet" href="{{ URL::asset('src/bootstrap/css/bootstrap.min.css') }}"> <!--Bootstrap-->
+    <link rel="stylesheet" href="{{ URL::asset('src/index.css') }}"> <!--Index-->
     <link rel="stylesheet" href="{{ URL::asset('src/bootstrap.css') }}"> <!--Bootstrap customizável-->
-    <link rel="stylesheet" href="{{ URL::asset("src/styles/Pages/Dashboard/index.css") }}"> <!--Index da dashboard-->
+    <link rel="stylesheet" href="{{ URL::asset('src/styles/Pages/Dashboard/index.css') }}"> <!--Index da dashboard-->
 </head>
 <body>
 
     @component("Components.layout.Header")
     @endcomponent
-
-    @if ( session("success") )
-
-        <p>sucesso</p>
-
-    @endif
 
     <main>
 
@@ -29,45 +23,53 @@
             <div>Seções</div>
 
             @foreach ($sections as $section)
-
                 @component("Components.layout.SectionBtn")
-
                     @slot("name")
-
                         {{$section["name"]}}
-
                     @endslot
-                    
                 @endcomponent
-
             @endforeach
 
         </aside> {{--NavBar--}}
 
         <section class="Hero">
 
-            <form action="{{route("dashboard.update", $Hero["id"])}}" method="post">
-                @method("put")
+            @if (session("success"))
+                <div class="alert alert-success" role="alert">
+                    {{ session("success") }}
+                </div>
+            @endif {{--Mensagem de sucesso--}}
+
+            <form action="{{ route('dashboard.update', $Hero['id']) }}" method="post" class="Form">
+                @method('put')
                 @csrf
-                
-                <button type="submit" class="btn btn-primary">Salvar alterações</button>
 
-                <section class="d-flex align-items-center gap-2">
-                
-                    <div class="mb-3">
+                <section class="d-flex align-items-end">
 
-                        <label for="exampleInputEmail1" class="form-label">Mensagem de boas vindas</label>
-                        <input type="text" name="welcomeMessage" class="form-control" id="welcomeMessage" value="{{ $Hero["welcomeMessage"] }}" aria-describedby="emailHelp"/>
-                        
-                    </div> {{--Mensagem de boas vindas--}}
+                    <button type="submit" class="btn btn-primary">Salvar alterações</button>
 
-                    <div class="mb-3">
+                </section> {{--Botão--}}
 
-                        <label for="exampleInputEmail1" class="form-label">Especialidade</label>
-                        <input type="text" name="expertise" class="form-control" id="expertise" value="{{ $Hero["expertise"] }}" aria-describedby="emailHelp"/>
-                        
-                    </div> {{--Mensagem de boas vindas--}}
-                    
+                <section class="d-flex flex-column gap-3">
+
+                    <div class="d-flex flex-column">
+
+                        <label for="welcomeMessage" class="form-label">Mensagem de boas-vindas</label>
+                        <input type="text" name="welcomeMessage" class="form-control" id="welcomeMessage" value="{{ $Hero['welcomeMessage'] }}" />
+                        @error('welcomeMessage')
+                            <p class="textError">{{ $message }}</p>
+                        @enderror
+
+                    </div> {{--Mensagem de boas-vindas--}}
+
+                    <div>
+                        <label for="expertise" class="form-label">Especialidade</label>
+                        <input type="text" name="expertise" class="form-control" id="expertise" value="{{ $Hero['expertise'] }}" />
+                        @error('expertise')
+                            <p class="textError">{{ $message }}</p>
+                        @enderror
+                    </div> {{--Especialidade--}}
+
                 </section> {{--Inputs--}}
 
                 <section>
@@ -76,18 +78,14 @@
                     <article>
 
                         <figure>
-
                             <img src="{{ $Hero['imageUrl'] }}" alt="Ilustração do Hero" draggable="false" loading="lazy" />
-
                         </figure>
-
-                        <input type="file" name="image" />
 
                     </article>
 
                 </section> {{--Imagem--}}
 
-             </form>
+            </form>
 
         </section> {{--Conteúdo principal--}}
 

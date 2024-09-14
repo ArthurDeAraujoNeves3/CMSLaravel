@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\HomeController;
+use App\Http\Controllers\HeroController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PortfolioController;
 use Illuminate\Support\Facades\Route;
@@ -16,5 +16,6 @@ Route::controller(LoginController::class)->group(function () {
 
 });
 
-//Página do admin
-Route::resource("/dashboard", HomeController::class)->middleware("auth");
+// Página do admin
+// Hero
+Route::resource("/dashboard", HeroController::class)->middleware("auth");

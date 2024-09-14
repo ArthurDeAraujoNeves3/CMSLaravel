@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('hero', function (Blueprint $table) {
 
-            $table->string("id", 36);
+            $table->uuid("id");
             $table->string("imageUrl", 2048);
             $table->string("welcomeMessage", 100);
             $table->string("expertise", 80);

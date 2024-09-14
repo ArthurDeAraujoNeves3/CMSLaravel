@@ -2,14 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\DashboardRequest;
 use App\Http\Requests\HeroRequest;
 use App\Models\General;
 use App\Models\Hero;
 use App\Models\Sections;
 use Illuminate\Http\Request;
 
-class HomeController extends Controller {
+class HeroController extends Controller {
 
     private array $data = array();
     
@@ -27,7 +26,7 @@ class HomeController extends Controller {
 
         // $this->data["Hero"] = Hero::all()->toArray();
         $Hero = Hero::all()->toArray();
-
+        
         // dd($Hero);
 
         $this->data["Hero"] = $Hero[0];
@@ -55,15 +54,19 @@ class HomeController extends Controller {
 
     public function update(HeroRequest $r, string $id) {
         
-        dd($r->post());
+        // dd($r->post());
+        $welcomeMessage = $r->post()["welcomeMessage"];
+        $expertise = $r->post()["expertise"];
+        $imageUrl = "";
         
         Hero::select()->where("id", "=", $id)->update([
 
-            "welcomeMessage" => "",
-            "expertise" => "",
-            "imageUrl" => "",
-
+            "welcomeMessage" => $welcomeMessage,
+            "expertise" => $expertise,
+            
         ]);
+
+        return redirect("/dashboard")->with("success", "Alterações salvas com sucesso!");
 
     }
 

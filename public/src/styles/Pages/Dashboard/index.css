@@ -1,85 +1,83 @@
+/* Header */
 header {
-
     background-color: var(--theme);
     height: 50px;
-
 }
-/* Logo */
+
 header > img {
-
     width: 40px;
-
 }
 
+/* Layout principal */
 main {
-
     display: flex;
-    align-items: center;
-    background-color: var(--theme);
     height: 100vh;
+    background-color: var(--theme);
 }
 
-.SectionBtn {
+/* Barra de navegação */
+.Aside {
+    max-width: 200px;
+    min-width: 200px;
+    height: 100%;
+    background-color: var(--theme);
+    padding: 10px;
+    overflow-y: auto;
+}
 
+.Hero {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    background-color: var(--bg);
+    border-top-left-radius: var(--rounded);
+    padding: 20px;
+    margin-left: 10px;
+}
+
+/* Botão para outras páginas */
+.SectionBtn {
     overflow: hidden;
     display: flex;
     align-items: center;
     justify-content: start;
     width: 100%;
     height: 50px;
-    padding: 0px 10px;
+    padding: 0 10px;
     border-radius: var(--rounded);
     background-color: var(--theme);
     transition: 0.2s;
     cursor: pointer;
-
 }
 .SectionBtn:hover {
-
     filter: brightness(0.9);
-
 }
 .SectionBtn > p {
-
     color: var(--bg);
-
 }
 
-.Aside {
-
-    max-width: 200px;
-    min-width: 200px;
-    height: 100%;
-    background-color: var(--theme);
-    padding: 0px 10px;
-
-}
-
-.Hero {
-
-    display: flex;
-    justify-content: space-between;
+/* Formulários */
+.Form {
+    max-width: 100%;
     width: 100%;
-    height: 100%;
-    background-color: var(--bg);
-    border-top-left-radius: var(--rounded);
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+input.form-control {
+    width: 100%;
+    height: 40px;
     padding: 10px;
+    border-radius: var(--rounded);
 }
-.TextPortfolio {
-
-    color: var(--bg);
-
+label.form-label {
+    font-weight: bold;
+    margin-bottom: 5px;
 }
-
-.input, .inputTheme {
-
-    background-color: transparent;
-    border: none;
-    color: var(--bg);
-    
-}
-.input, .inputTheme:focus {
-
-    outline: none;
-
+/* Botão */
+button.btn {
+    margin-top: auto; /* Faz com que o botão se mova para baixo */
+    width: 100%;
+    height: 45px;
+    font-size: 16px;
 }

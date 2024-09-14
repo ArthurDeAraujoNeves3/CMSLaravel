@@ -23,8 +23,8 @@ class HeroRequest extends FormRequest
     {
         return [
             
-            "welcomeMessage" => "required|max_digits:100",
-            "expertise" => "required|max_digits:80"
+            "welcomeMessage" => "required|max:100",
+            "expertise" => "required|max:80"
 
         ];
     }

@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('general', function (Blueprint $table) {
             
-            $table->string("id", 36);
+            $table->uuid("id");
             $table->string("name", 256);
             $table->string("bgColor", 7);
             $table->string("colorTheme", 7);

@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('experiences', function (Blueprint $table) {
             
-            $table->string("id", 36);
+            $table->uuid("id");
             $table->string("title", 80);
             $table->string("enterpriseName", 100);
             $table->string("description", 500);
