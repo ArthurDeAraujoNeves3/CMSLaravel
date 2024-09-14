@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AboutMeController;
 use App\Http\Controllers\HeroController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PortfolioController;
@@ -19,3 +20,5 @@ Route::controller(LoginController::class)->group(function () {
 // Página do admin
 // Hero
 Route::resource("/dashboard", HeroController::class)->middleware("auth");
+// Aboute Me
+Route::resource("/aboutMe", AboutMeController::class)->middleware("auth");

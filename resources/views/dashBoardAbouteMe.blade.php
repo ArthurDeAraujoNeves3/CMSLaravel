@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Dashboard | Sobre Mim</title>
+
+    <link rel="stylesheet" href="{{ URL::asset('src/bootstrap/css/bootstrap.min.css') }}"> <!--Bootstrap-->
+    <link rel="stylesheet" href="{{ URL::asset('src/index.css') }}"> <!--Index-->
+    <link rel="stylesheet" href="{{ URL::asset('src/bootstrap.css') }}"> <!--Bootstrap customizável-->
+    <link rel="stylesheet" href="{{ URL::asset('src/styles/Pages/Dashboard/index.css') }}"> <!--Index da dashboard-->
+</head>
+<body>
+
+    @component("Components.layout.Header")
+    @endcomponent
+
+    <main>
+
+        <aside class="d-flex flex-column Aside">
+
+            <div>Seções</div>
+
+            @foreach ($sections as $section)
+                @component("Components.layout.SectionBtn")
+                    @slot("name")
+                        {{$section["name"]}}
+                    @endslot
+                @endcomponent
+            @endforeach
+
+        </aside> {{--NavBar--}}
+
+        <section class="Hero">
+
+            @if (session("success"))
+                <div class="alert alert-success" role="alert">
+                    {{ session("success") }}
+                </div>
+            @endif {{--Mensagem de sucesso--}}
+
+            <form action="{{ route('aboutMe.update', $Hero['id']) }}" method="post" class="Form">
+                @method('put')
+                @csrf
+
+                <section class="d-flex align-items-end">
+
+                    <button type="submit" class="btn btn-primary">Salvar alterações</button>
+
+                </section> {{--Botão--}}
+
+                <section class="d-flex flex-column gap-3">
+
+                    <div class="d-flex flex-column">
+
+                        <label for="location" class="form-label">Localização</label>
+                        <input type="text" name="location" class="form-control" id="location" value="{{ $Hero['location'] }}" />
+                        @error('location')
+                            <p class="textError">{{ $message }}</p>
+                        @enderror
+
+                    </div> {{--Mensagem de boas-vindas--}}
+
+                    <div>
+                        <label for="description" class="form-label">Descrição</label>
+                        <input type="text" name="description" class="form-control" id="expertise" value="{{ $Hero['description'] }}" />
+                        @error('description')
+                            <p class="textError">{{ $message }}</p>
+                        @enderror
+                    </div> {{--Especialidade--}}
+
+                </section> {{--Inputs--}}
+
+            </form>
+
+        </section> {{--Conteúdo principal--}}
+
+    </main>
+
+</body>
+</html>

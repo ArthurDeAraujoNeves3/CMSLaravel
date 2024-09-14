@@ -24,7 +24,6 @@ class HeroController extends Controller {
 
     public function index() {
 
-        // $this->data["Hero"] = Hero::all()->toArray();
         $Hero = Hero::all()->toArray();
         
         // dd($Hero);
