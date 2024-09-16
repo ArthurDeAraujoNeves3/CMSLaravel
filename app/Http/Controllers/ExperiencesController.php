@@ -31,8 +31,7 @@ class ExperiencesController extends Controller
         // dd($Experiences);
 
         $this->data["Experiences"] = $Experiences;
-        // dd($Experiences[0]["title"]);
-        $this->data["sections"] = Sections::all()->toArray();
+        // dd($Experiences[0]);
         
         return view("dashboardExperiences", $this->data);
 
@@ -43,7 +42,7 @@ class ExperiencesController extends Controller
      */
     public function create() {
         
-        
+        dd("outroCreate");
         
     }
 
@@ -74,7 +73,7 @@ class ExperiencesController extends Controller
      */
     public function show(string $id)
     {
-        //
+        dd("outroShow");
     }
 
     /**
@@ -82,33 +81,39 @@ class ExperiencesController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        dd("outroEdit");
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $r, string $id) {
-        // dd($r->post());
-        $welcomeMessage = $r->post()["welcomeMessage"];
-        $expertise = $r->post()["expertise"];
-        $imageUrl = "";
+    public function update(ExperienceRequest $r, string $id) {
+
+        $title = $r->post()["title"];
+        $interprise = $r->post()["interprise"];
+        $description = $r->post()["description"];
+        $data = $r->post()["date"];
         
         Experiences::select()->where("id", "=", $id)->update([
 
-            "welcomeMessage" => $welcomeMessage,
-            "expertise" => $expertise,
+            "title" => $title,
+            "enterpriseName" => $interprise,
+            "description" => $description,
+            "date" => $data
             
         ]);
 
-        return redirect("/dashboard")->with("success", "Alterações salvas com sucesso!");
+        return redirect("/experiences")->with("success", "Alterações salvas com sucesso!");
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
-    {
-        //
+    public function destroy(string $id) {
+
+        Experiences::select()->where("id", "=", $id)->delete();
+
+        return redirect("/experiences")->with("success", "Excluído com sucesso");
+
     }
 }

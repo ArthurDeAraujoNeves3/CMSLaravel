@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AboutMeController;
 use App\Http\Controllers\ExperiencesController;
+use App\Http\Controllers\ExpertiseEditController;
 use App\Http\Controllers\HeroController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PortfolioController;
@@ -25,3 +26,4 @@ Route::resource("/dashboard", HeroController::class)->middleware("auth");
 Route::resource("/aboutMe", AboutMeController::class)->middleware("auth");
 // Experiências
 Route::resource("/experiences", ExperiencesController::class)->middleware("auth");
+Route::get("/experiences/edit/{id}", [ExpertiseEditController::class, "index"])->name("experienceEdit.index")->middleware("auth");
