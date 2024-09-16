@@ -1,12 +1,13 @@
 <?php
 
 use App\Http\Controllers\AboutMeController;
+use App\Http\Controllers\ExperiencesController;
 use App\Http\Controllers\HeroController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PortfolioController;
 use Illuminate\Support\Facades\Route;
 
-// Página do cliente
+// Portifólio
 Route::resource("/", PortfolioController::class);
 
 // Login
@@ -17,8 +18,10 @@ Route::controller(LoginController::class)->group(function () {
 
 });
 
-// Página do admin
+// Página admin
 // Hero
 Route::resource("/dashboard", HeroController::class)->middleware("auth");
-// Aboute Me
+// Sobre mim
 Route::resource("/aboutMe", AboutMeController::class)->middleware("auth");
+// Experiências
+Route::resource("/experiences", ExperiencesController::class)->middleware("auth");

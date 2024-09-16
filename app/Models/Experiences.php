@@ -9,4 +9,5 @@ class Experiences extends Model
 {
     use HasFactory;
     public $timestamps = false;
+    public $incrementing = false; // Faz com que o toArray() não converta o id para interger
 }

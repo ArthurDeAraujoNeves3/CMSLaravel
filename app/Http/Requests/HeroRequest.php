@@ -34,9 +34,9 @@ class HeroRequest extends FormRequest
 
         return [
 
-            "welcomeMessage.required" => "Preencha o input",
+            "welcomeMessage.required" => "Preencha o campo acima",
             "welcomeMessage.max" => "Máximo de 100 caracteres",
-            "expertise.required" => "Preencha o input",
+            "expertise.required" => "Preencha o campo acima",
             "expertise.max" => "Máximo de 80 caracteres"
 
         ];

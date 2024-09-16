@@ -12,7 +12,7 @@
         <p class="m-0 text-nowrap truncate">Sobre Mim</p>
     
     </a>
-    <a href="{{ route("dashboard.index") }}" class="SectionBtn text-decoration-none">
+    <a href="{{ route("experiences.index") }}" class="SectionBtn text-decoration-none">
 
         <p class="m-0 text-nowrap truncate">Experiências</p>
     
