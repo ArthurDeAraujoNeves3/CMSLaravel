@@ -18,19 +18,8 @@
 
     <main>
 
-        <aside class="d-flex flex-column Aside">
-
-            <div>Seções</div>
-
-            @foreach ($sections as $section)
-                @component("Components.layout.SectionBtn")
-                    @slot("name")
-                        {{$section["name"]}}
-                    @endslot
-                @endcomponent
-            @endforeach
-
-        </aside> {{--NavBar--}}
+        @component("Components.layout.Aside")
+        @endcomponent
 
         <section class="Hero">
 
