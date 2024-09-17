@@ -88,9 +88,25 @@ class ProjectsController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(ProjectsRequest $r, string $id)
     {
-        //
+        
+        $name = $r->post()["name"];
+        $description = $r->post()["description"];
+        $github = $r->post()["github"] ?? "";
+        $website = $r->post()["website"] ?? "";
+        
+        Projects::select()->where("id", "=", $id)->update([
+
+            "name" => $name,
+            "description" => $description,
+            "github" => $github,
+            "webSite" => $website
+            
+        ]);
+
+        return redirect("/projects")->with("success", "Alterações salvas com sucesso!");
+
     }
 
     /**
