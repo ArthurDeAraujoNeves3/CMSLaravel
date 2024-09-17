@@ -26,8 +26,8 @@ class ProjectsRequest extends FormRequest
             "name" => "required|max:80",
             "description" => "required|max:500",
             "github" => "max:1000",
-            "website" => "max:1000"
-
+            "website" => "max:1000",
+            "image" => "required|image"
         ];
     }
 
@@ -41,6 +41,8 @@ class ProjectsRequest extends FormRequest
             "description.max" => "Máximo de 500 caracteres",
             "github.required" => "Preencha o campo acima",
             "website.required" => "Preencha o campo acima",
+            "image.required" => "Insira uma imagem",
+            "image.image" => "Insira uma imagem válida"
             
         ];
 

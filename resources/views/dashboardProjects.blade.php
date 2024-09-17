@@ -15,7 +15,7 @@
 
     <div id="modal" class="Modal d-none">
 
-        <form action="{{ route("projects.store") }}" method="post">
+        <form action="{{ route("projects.store") }}" method="post" enctype="multipart/form-data">
             @csrf
             
             <section class="d-flex flex-column gap-3">
@@ -51,6 +51,14 @@
                         <p class="textError">{{ $message }}</p>
                     @enderror
                 </div> {{--Data de atuação--}}
+
+                <div>
+                    <label for="modalDate" class="form-label">Escolha a capa</label>
+                    <input type="file" name="image" id="image" />
+                    @error('image')
+                        <p class="textError">{{ $message }}</p>
+                    @enderror
+                </div> {{--Imagem--}}
     
                 <section class="d-flex flex-column gap-1 align-items-end">
                     <button type="submit" class="btn btn-primary">Adicionar</button>
@@ -101,7 +109,7 @@
 
                         <figure>
 
-                            <img src="{{ $Projects[$i]['imageUrl'] }}" />
+                            <img src="{{ asset("storage/".$Projects[$i]['imageUrl']) }}" />
                             
                         </figure>
                         

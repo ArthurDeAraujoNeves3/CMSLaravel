@@ -50,7 +50,11 @@ class ProjectsController extends Controller
      */
     public function store(ProjectsRequest $r) {
         
-        // dd($r->all());
+        $r->all();
+        
+        $file = $r->image;
+        $path = $file->store("capas", "public");
+        
         $id = (string) Str::uuid();
 
         $sectionId = Sections::all()->toArray()[3]["id"]; // Projetos
@@ -61,7 +65,7 @@ class ProjectsController extends Controller
         $obj->description = $r->all()["description"];
         $obj->github = $r->all()["github"] ?? "";
         $obj->website = $r->all()["website"] ?? "";
-        $obj->imageUrl = "";
+        $obj->imageUrl = $path;
         $obj->sectionId = $sectionId;
         $obj->save();
 
