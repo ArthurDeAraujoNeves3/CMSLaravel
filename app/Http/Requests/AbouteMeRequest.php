@@ -24,7 +24,8 @@ class AbouteMeRequest extends FormRequest
         return [
             
             "location" => "required|max:80",
-            "description" => "required|max:500"
+            "description" => "required|max:500",
+            "pdf" => "required|file"
 
         ];
     }
@@ -36,7 +37,10 @@ class AbouteMeRequest extends FormRequest
             "location.required" => "Preencha o input",
             "location.max" => "Máximo de 80 caracteres",
             "description.required" => "Preencha o input",
-            "description.max" => "Máximo de 500 caracteres"
+            "description.max" => "Máximo de 500 caracteres",
+            "pdf.required" => "Envie o seu currículo por favor",
+            "pdf.file" => "Envie um arquivo válido por favor"
+
         ];
     }
 }

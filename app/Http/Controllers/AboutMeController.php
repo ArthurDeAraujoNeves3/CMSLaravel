@@ -7,6 +7,7 @@ use App\Models\AboutMe;
 use App\Models\General;
 use App\Models\Sections;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class AboutMeController extends Controller
 {
@@ -71,9 +72,22 @@ class AboutMeController extends Controller
      */
     public function update(AbouteMeRequest $r, string $id)
     {
+
         $location = $r->post()["location"];
         $description = $r->post()["description"];
-        $imageUrl = "";
+        
+        if ( $r->pdf ) {
+
+            $file = $r->pdf;
+            $path = $file->store("pdf", "public");
+
+            AboutMe::select()->where("id", "=", $id)->update([
+
+                "pdf" => $path
+                
+            ]); 
+
+        };
         
         AboutMe::select()->where("id", "=", $id)->update([
 

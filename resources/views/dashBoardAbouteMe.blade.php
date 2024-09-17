@@ -29,7 +29,7 @@
                 </div>
             @endif {{--Mensagem de sucesso--}}
 
-            <form action="{{ route('aboutMe.update', $Hero['id']) }}" method="post" class="Form">
+            <form action="{{ route('aboutMe.update', $Hero['id']) }}" method="post" class="Form" enctype="multipart/form-data">
                 @method('put')
                 @csrf
 
@@ -52,12 +52,26 @@
                     </div> {{--Mensagem de boas-vindas--}}
 
                     <div>
+
                         <label for="description" class="form-label">Descrição</label>
                         <input type="text" name="description" class="form-control" id="expertise" value="{{ $Hero['description'] }}" />
                         @error('description')
                             <p class="textError">{{ $message }}</p>
                         @enderror
+
                     </div> {{--Especialidade--}}
+
+                    <div>
+
+                        <label for="pdf" class="form-label">Currículo</label>
+                        <input type="file" name="pdf" class="" id="pdf" />
+                        @error('pdf')
+                            <p class="textError">{{ $message }}</p>
+                        @enderror
+
+                    </div> {{--Currículo--}}
+
+                    <button class="btn btn-primary" {{ $Hero["pdf"] == "" ? "disabled" : ""}}>Baixar currículo</button>
 
                 </section> {{--Inputs--}}
 
