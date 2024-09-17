@@ -6,7 +6,6 @@ use App\Http\Requests\ExperienceRequest;
 use App\Models\Experiences;
 use App\Models\General;
 use App\Models\Sections;
-use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
 class ExperiencesController extends Controller

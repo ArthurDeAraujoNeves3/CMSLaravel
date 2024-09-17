@@ -15,39 +15,39 @@
 
     <div id="modal" class="Modal d-none">
 
-        <form action="{{ route("experiences.store") }}" method="post">
+        <form action="{{ route("projects.store") }}" method="post">
             @csrf
             
             <section class="d-flex flex-column gap-3">
     
                 <div class="d-flex flex-column">
-                    <label for="modalTitle" class="form-label">Título</label>
-                    <input type="text" name="title" class="form-control" id="modalTitle" />
-                    @error('title')
+                    <label for="name" class="form-label">Nome</label>
+                    <input type="text" name="name" class="form-control" id="name" />
+                    @error('name')
                         <p class="textError">{{ $message }}</p>
                     @enderror
                 </div> {{--Título--}}
     
                 <div>
-                    <label for="modalInterprise" class="form-label">Empresa em que atuou</label>
-                    <input type="text" name="interprise" class="form-control" id="modalInterprise" />
-                    @error('interprise')
+                    <label for="description" class="form-label">Descrição</label>
+                    <input type="text" name="description" class="form-control" id="description" />
+                    @error('description')
                         <p class="textError">{{ $message }}</p>
                     @enderror
                 </div> {{--Nome da empresa--}}
     
                 <div>
-                    <label for="modalDescription" class="form-label">Descrição</label>
-                    <input type="text" name="description" class="form-control" id="modalDescription" />
-                    @error('description')
+                    <label for="github" class="form-label">Github</label>
+                    <input type="text" name="github" class="form-control" id="github" />
+                    @error('github')
                         <p class="textError">{{ $message }}</p>
                     @enderror
                 </div> {{--Descrição--}}
     
                 <div>
-                    <label for="modalDate" class="form-label">Data de atuação</label>
-                    <input type="text" name="date" class="form-control" id="modalDate" />
-                    @error('date')
+                    <label for="modalDate" class="form-label">Site</label>
+                    <input type="text" name="website" class="form-control" id="modalDate" />
+                    @error('website')
                         <p class="textError">{{ $message }}</p>
                     @enderror
                 </div> {{--Data de atuação--}}
@@ -65,7 +65,6 @@
     
     </div>
     
-
     @component("Components.layout.Header")
     @endcomponent
 
@@ -82,7 +81,7 @@
                 </div>
             @endif
 
-            <form action="{{ route("experiences.create") }}" method="post" class="Form">
+            <form action="{{ route("projects.create") }}" method="post" class="Form">
                 @method('put')
                 @csrf
 
@@ -96,24 +95,34 @@
 
             <section class="d-flex flex-column gap-3">
 
-                @for($i = 0; $i < count($Experiences); $i++)
+                @for($i = 0; $i < count($Projects); $i++)
             
-                    <div class="d-flex flex-column experienceBox">
-                        
-                        <div class="d-flex justify-content-between">
+                    <div class="d-flex flex-column gap-1 experienceBox">
+
+                        <figure>
+
+                            <img src="{{ $Projects[$i]['imageUrl'] }}" />
                             
-                            <p class="m-0">{{ $Experiences[$i]["title"] }}</p>
-                            <p class="m-0">{{ $Experiences[$i]["date"] }}</p>
+                        </figure>
+                        
+                        <div class="d-flex flex-column">
+                            
+                            <p class="m-0">{{ $Projects[$i]["name"] }}</p>
+                            <p class="m-0">{{ $Projects[$i]["description"] }}</p>
 
-                        </div>
+                        </div> {{--Nome e descrição--}}
 
-                        <p class="m-0 Desc">{{ $Experiences[$i]["enterpriseName"] }}</p>
-                        <p class="m-0">{{ $Experiences[$i]["description"] }}</p>
-            
+                        <div class="d-flex align-items-center gap-1">
+
+                            <button class="btn btn-primary" {{ $Projects[$i]["github"] == "" ? "disabled" : "" }}>Github</button>
+                            <button class="btn btn-primary" {{ $Projects[$i]["webSite"] == "" ? "disabled" : "" }}>Website</button>
+
+                        </div> {{--Github e website--}}
+
                         <div class="d-flex align-items-center gap-2">
 
                             <!-- Formulário para editar -->
-                            <form action="{{ route('experienceEdit.index', $Experiences[$i]['id']) }}" method="get">
+                            <form action="{{ route('projects.index', $Projects[$i]['id']) }}" method="get">
 
                                 @csrf
                                 <button type="submit" class="btn btn-primary">Editar</button>
@@ -121,7 +130,7 @@
                             </form>
 
                             <!-- Formulário para excluir -->
-                            <form action="{{ route('experiences.destroy', $Experiences[$i]['id']) }}" method="post">
+                            <form action="{{ route('projects.destroy', $Projects[$i]['id']) }}" method="post">
 
                                 @method('DELETE')
                                 @csrf

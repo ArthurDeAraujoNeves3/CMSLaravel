@@ -6,6 +6,7 @@ use App\Http\Controllers\ExpertiseEditController;
 use App\Http\Controllers\HeroController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PortfolioController;
+use App\Http\Controllers\ProjectsController;
 use Illuminate\Support\Facades\Route;
 
 // Portifólio
@@ -27,3 +28,5 @@ Route::resource("/aboutMe", AboutMeController::class)->middleware("auth");
 // Experiências
 Route::resource("/experiences", ExperiencesController::class)->middleware("auth");
 Route::get("/experiences/edit/{id}", [ExpertiseEditController::class, "index"])->name("experienceEdit.index")->middleware("auth");
+// Projetos
+Route::resource("/projects", ProjectsController::class)->middleware("auth");
