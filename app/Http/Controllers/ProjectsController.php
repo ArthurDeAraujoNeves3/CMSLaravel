@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\ProjectsRequest;
+use App\Http\Requests\ProjectsUpdate;
 use App\Models\General;
 use App\Models\Projects;
 use App\Models\Sections;
@@ -92,20 +93,33 @@ class ProjectsController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(ProjectsRequest $r, string $id)
+    public function update(ProjectsUpdate $r, string $id)
     {
-        
+
         $name = $r->post()["name"];
         $description = $r->post()["description"];
         $github = $r->post()["github"] ?? "";
         $website = $r->post()["website"] ?? "";
+        
+        if ( $r->image ) {
+
+            $file = $r->image;
+            $path = $file->store("capas", "public");
+
+            Projects::select()->where("id", "=", $id)->update([
+
+                "imageUrl" => $path
+                
+            ]);
+
+        };
         
         Projects::select()->where("id", "=", $id)->update([
 
             "name" => $name,
             "description" => $description,
             "github" => $github,
-            "webSite" => $website
+            "webSite" => $website,
             
         ]);
 

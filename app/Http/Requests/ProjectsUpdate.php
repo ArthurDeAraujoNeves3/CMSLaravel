@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class ProjectsEditRequest extends FormRequest
+class ProjectsUpdate extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -22,19 +22,17 @@ class ProjectsEditRequest extends FormRequest
     public function rules(): array
     {
         return [
-
+            
             "name" => "required|max:80",
             "description" => "required|max:500",
             "github" => "max:1000",
             "website" => "max:1000",
-            "image" => "required|image"
-
+            "image" => "nullable|image"
         ];
     }
 
-    public function messages()
-    {
-        
+    public function messages() {
+
         return [
 
             "name.required" => "Preencha o campo acima",
@@ -43,8 +41,7 @@ class ProjectsEditRequest extends FormRequest
             "description.max" => "Máximo de 500 caracteres",
             "github.required" => "Preencha o campo acima",
             "website.required" => "Preencha o campo acima",
-            "image.required" => "Insira uma imagem",
-            "image.image" => "Insira uma imagem válida",
+            "image.image" => "Insira uma imagem válida"
             
         ];
 

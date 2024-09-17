@@ -23,7 +23,7 @@
 
         <section class="Hero gap-1">
 
-            <form action="{{ route("projects.update", $Projects["id"]) }}" method="post">
+            <form action="{{ route("projects.update", $Projects["id"]) }}" method="post" enctype="multipart/form-data">
                 @csrf
                 @method("put")
                 
@@ -60,6 +60,14 @@
                             <p class="textError">{{ $message }}</p>
                         @enderror
                     </div> {{--Data de atuação--}}
+
+                    <div>
+                        <label for="modalDate" class="form-label">Escolha a capa</label>
+                        <input type="file" name="image" value="{{ asset("storage/".$Projects["imageUrl"]) }}" id="image" />
+                        @error('image')
+                            <p class="textError">{{ $message }}</p>
+                        @enderror
+                    </div> {{--Imagem--}}
         
                     <section class="d-flex flex-column gap-1 align-items-end">
 
