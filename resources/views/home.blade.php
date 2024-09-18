@@ -13,25 +13,37 @@
 </head>
 <body>
 
-    <header>
+    <nav class="navbar navbar-expand-lg">
 
-        <section class="Header container d-flex align-items-center justify-content-between">
+        <div class="Header container d-flex align-items-center justify-content-between">
 
             <p class="title textHightlight m-0">{{ $name }}</p>
+          
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
 
-            <nav class="d-flex align-items-center gap-5">
+            <span class="navbar-toggler-icon"></span>
 
-                @foreach($sections as $section)
+            </button>
 
-                    <a href="#{{ $section["name"] }}" class="text-decoration-none">{{ $section["name"] }}</a>
+            <div id="navbarNav">
 
-                @endforeach
+                <ul class="navbar-nav d-flex align-ites-center gap-3">
 
-            </nav> {{--Links para navegações--}}
+                    @foreach($sections as $section) 
 
-        </section>
+                        <li>
+                            <a href="#{{ $section["name"] }}" class="text-decoration-none">{{ $section["name"] }}</a>
+                        </li>
 
-    </header>
+                    @endforeach
+                
+                </ul>
+
+            </div>
+
+        </div>
+
+    </nav>
 
     <main>
 
