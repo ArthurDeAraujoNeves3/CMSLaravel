@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\AboutMe;
 use App\Models\General;
+use App\Models\Hero;
 use App\Models\Sections;
 use Illuminate\Http\Request;
 
@@ -23,6 +25,10 @@ class PortfolioController extends Controller {
     public function index() {
 
         $this->data["sections"] = Sections::all()->toArray();
+        $this->data["Hero"] = Hero::all()->toArray();
+        $this->data["AbouteMe"] = AboutMe::all()->toArray();
+
+        // dd($this->data["AbouteMe"]);
 
         return view("home", $this->data);
         
