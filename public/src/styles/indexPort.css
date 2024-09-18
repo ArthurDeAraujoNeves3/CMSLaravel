@@ -1,0 +1,73 @@
+@import "./Variables.css";
+
+/* Reset das configurações */
+* {
+
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+
+}
+
+/* Portfólio */
+@font-face {
+
+    font-family: "Title";
+    src: url("../assets/fonts/Title/PlaypenSans-SemiBold.ttf");
+
+}
+@font-face {
+
+    font-family: "Text";
+    src: url("../assets/fonts/Text/OpenSans-Medium.ttf");
+
+}
+
+body {
+
+    background-color: var(--bgP);
+    font-family: "Text";
+    color: var(--textP);
+    overflow-x: hidden;
+
+}
+
+a {
+
+    color: var(--textP);
+
+}
+
+/* Errors */
+.inputError {
+
+    border-color: var(--error) !important;
+
+}
+.textError {
+
+    color: var(--error);
+    font-size: 12px;
+
+}
+
+.Header {
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 60px;
+    border-bottom: 3px solid var(--detailsP);
+
+}
+.title {
+
+    font-family: "Title";
+
+}
+.textHightlight {
+
+    color: var(--theme);
+
+}

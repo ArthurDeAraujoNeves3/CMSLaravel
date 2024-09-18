@@ -24,20 +24,6 @@
 
 }
 
-/* Portfólio */
-@font-face {
-
-    font-family: "TitleP";
-    src: url("./assets/fonts/Title/OpenSans-Bold.ttf");
-
-}
-@font-face {
-
-    font-family: "TextP";
-    src: url("./assets/fonts/Title/OpenSans-Bold.ttf");
-
-}
-
 body {
 
     background-color: var(--bg);
