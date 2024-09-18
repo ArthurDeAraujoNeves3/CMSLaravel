@@ -6,6 +6,7 @@ use App\Http\Requests\AbouteMeRequest;
 use App\Models\AboutMe;
 use App\Models\General;
 use App\Models\Sections;
+use Illuminate\Http\Client\Response;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
@@ -13,8 +14,9 @@ class AboutMeController extends Controller
 {
 
     private array $data = array();
-    
-    public function __construct() {
+
+    public function __construct()
+    {
         $General = General::all()->toArray();
         // dd($General);
         $this->data["name"] = $General[0]["name"];
@@ -26,12 +28,12 @@ class AboutMeController extends Controller
     {
 
         $AbouteMe = AboutMe::all()->toArray();
-        
+
         // dd($AbouteMe);
 
         $this->data["Hero"] = $AbouteMe[0];
         $this->data["sections"] = Sections::all()->toArray();
-        
+
         return view("dashBoardAbouteMe", $this->data);
     }
 
@@ -46,18 +48,20 @@ class AboutMeController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(Request $r)
     {
-        //
+
+        $url = $_SERVER["REQUEST_URI"];
+        $url = explode("?", $url);
+        $path = $url[1];
+        return Storage::download("public/{$path}", 'Currículo - Arthur.pdf');
+    
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
-    {
-        //
-    }
+    public function show(string $id) {}
 
     /**
      * Show the form for editing the specified resource.
@@ -75,8 +79,8 @@ class AboutMeController extends Controller
 
         $location = $r->post()["location"];
         $description = $r->post()["description"];
-        
-        if ( $r->pdf ) {
+
+        if ($r->pdf) {
 
             $file = $r->pdf;
             $path = $file->store("pdf", "public");
@@ -84,16 +88,15 @@ class AboutMeController extends Controller
             AboutMe::select()->where("id", "=", $id)->update([
 
                 "pdf" => $path
-                
-            ]); 
 
+            ]);
         };
-        
+
         AboutMe::select()->where("id", "=", $id)->update([
 
             "location" => $location,
             "description" => $description,
-            
+
         ]);
 
         return redirect("/aboutMe")->with("success", "Alterações salvas com sucesso!");

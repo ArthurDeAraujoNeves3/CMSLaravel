@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,25 +12,27 @@
     <link rel="stylesheet" href="{{ URL::asset('src/bootstrap.css') }}"> <!--Bootstrap customizável-->
     <link rel="stylesheet" href="{{ URL::asset('src/styles/Pages/Dashboard/index.css') }}"> <!--Index da dashboard-->
 </head>
+
 <body>
 
-    @component("Components.layout.Header")
+    @component('Components.layout.Header')
     @endcomponent
 
     <main>
 
-        @component("Components.layout.Aside")
+        @component('Components.layout.Aside')
         @endcomponent
 
         <section class="Hero">
 
-            @if (session("success"))
+            @if (session('success'))
                 <div class="alert alert-success" role="alert">
-                    {{ session("success") }}
+                    {{ session('success') }}
                 </div>
-            @endif {{--Mensagem de sucesso--}}
+            @endif {{-- Mensagem de sucesso --}}
 
-            <form action="{{ route('aboutMe.update', $Hero['id']) }}" method="post" class="Form" enctype="multipart/form-data">
+            <form action="{{ route('aboutMe.update', $Hero['id']) }}" method="post" class="Form"
+                enctype="multipart/form-data">
                 @method('put')
                 @csrf
 
@@ -37,29 +40,31 @@
 
                     <button type="submit" class="btn btn-primary">Salvar alterações</button>
 
-                </section> {{--Botão--}}
+                </section> {{-- Botão --}}
 
                 <section class="d-flex flex-column gap-3">
 
                     <div class="d-flex flex-column">
 
                         <label for="location" class="form-label">Localização</label>
-                        <input type="text" name="location" class="form-control" id="location" value="{{ $Hero['location'] }}" />
+                        <input type="text" name="location" class="form-control" id="location"
+                            value="{{ $Hero['location'] }}" />
                         @error('location')
                             <p class="textError">{{ $message }}</p>
                         @enderror
 
-                    </div> {{--Mensagem de boas-vindas--}}
+                    </div> {{-- Mensagem de boas-vindas --}}
 
                     <div>
 
                         <label for="description" class="form-label">Descrição</label>
-                        <input type="text" name="description" class="form-control" id="expertise" value="{{ $Hero['description'] }}" />
+                        <input type="text" name="description" class="form-control" id="expertise"
+                            value="{{ $Hero['description'] }}" />
                         @error('description')
                             <p class="textError">{{ $message }}</p>
                         @enderror
 
-                    </div> {{--Especialidade--}}
+                    </div> {{-- Especialidade --}}
 
                     <div>
 
@@ -69,17 +74,23 @@
                             <p class="textError">{{ $message }}</p>
                         @enderror
 
-                    </div> {{--Currículo--}}
+                    </div> {{-- Currículo --}}
 
-                    <button class="btn btn-primary" {{ $Hero["pdf"] == "" ? "disabled" : ""}}>Baixar currículo</button>
-
-                </section> {{--Inputs--}}
+                </section> {{-- Inputs --}}
 
             </form>
 
-        </section> {{--Conteúdo principal--}}
+            <form action="{{ route('aboutMe.store', $Hero['pdf']) }}" method="post">
+                @csrf
+
+                <button name="download" class="btn btn-primary" {{ $Hero['pdf'] == '' ? 'disabled' : '' }}>Baixar currículo</button>
+
+            </form>
+
+        </section> {{-- Conteúdo principal --}}
 
     </main>
 
 </body>
+
 </html>
