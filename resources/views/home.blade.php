@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>{{ $name }} - Ano atual</title>
+    <title>{{ $name }} - {{ date("Y") }}</title>
 
     <link rel="stylesheet" href="{{ URL::asset('src/bootstrap/css/bootstrap.min.css') }}"> <!--Bootstrap-->
     <link rel="stylesheet" href="{{ URL::asset('src/styles/indexPort.css') }}"> <!--Index-->
@@ -217,9 +217,9 @@
 
     </main>
 
-    <footer>
+    <footer class="d-flex align-items-center justify-content-center">
 
-
+        <p class="m-0 py-3">@ {{ date("Y") }} - {{ $name }}</p>
 
     </footer>
     
