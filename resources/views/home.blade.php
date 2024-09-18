@@ -75,7 +75,7 @@
 
             <article class="container d-flex flex-column align-items-start">
 
-                <section class="d-flex flex-column align-items-center">
+                <section class="d-flex flex-column">
                 
                     <p class="title textHightlight fs-4 m-0">{{ $sections[1]["name"] }}</p>
                     <p class="m-0">{{$AbouteMe[0]["location"]}}</p>
@@ -96,27 +96,65 @@
 
         </section> {{--Sobre mim--}}
 
-        <section id="{{ $sections[2]["name"] }}" class="Secao">
+        <section id="{{ $sections[2]["name"] }}">
 
             <article class="container d-flex flex-column align-items-start">
 
-                <section class="d-flex flex-column align-items-center">
+                <section class="d-flex flex-column">
                 
-                    <p class="title textHightlight fs-4 m-0">{{ $sections[1]["name"] }}</p>
-                    <p class="m-0">{{$AbouteMe[0]["location"]}}</p>
+                    <p class="title textHightlight fs-4 m-0">{{ $sections[2]["name"] }}</p>
                     
                 </section> {{--Título--}}
 
-                <p class="mt-2 m-0">{{ $AbouteMe[0]["description"] }}</p>
+                <div class="row w-100">
 
-                <section></section> {{--Redes sociais--}}
+                    <div class="col-4">
 
-                <form action="" method="post" class="mt-2">
+                      <nav id="navbar-example3" class="h-100 flex-column align-items-stretch pe-4 border-end">
 
-                    <button name="" class="btn btn-primary" >Baixar currículo</button>
+                        <nav class="nav nav-pills flex-column">
 
-                </form> {{--Botão para baixar PDF--}}
+                            @foreach($Experiences as $Experience)
 
+                                <a class="nav-link" href="#{{ $Experience["title"] }}">{{ $Experience["title"] }}</a>
+
+                            @endforeach
+
+                        </nav>
+
+                      </nav>
+
+                    </div> {{--Navbar--}}
+                  
+                    <div class="col-8">
+
+                      <div data-bs-spy="scroll" data-bs-target="#navbar-example3" data-bs-smooth-scroll="true" class="scrollspy-example-2" tabindex="0">
+
+                        @foreach($Experiences as $Experience)
+
+                            <div id="{{ $Experience["title"] }}">
+                                
+                                <section class="d-flex align-items-center justify-content-between">
+
+                                    <h4>{{ $Experience["title"] }}</h4>
+                                    <p class="m-0">{{ $Experience["date"] }}</p>
+
+                                </section>
+
+                                <p class="textHightlight m-0 mt-2">{{ $Experience["enterpriseName"] }}</p>
+
+                                <p class="m-0 mt-2">{{ $Experience["description"] }}</p>
+
+                            </div>
+
+                        @endforeach
+
+                      </div>
+
+                    </div>
+
+                </div> {{--Experiências--}}
+                
             </article>
 
         </section> {{--Experiências--}}

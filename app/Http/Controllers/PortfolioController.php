@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\AboutMe;
+use App\Models\Experiences;
 use App\Models\General;
 use App\Models\Hero;
 use App\Models\Sections;
@@ -27,8 +28,9 @@ class PortfolioController extends Controller {
         $this->data["sections"] = Sections::all()->toArray();
         $this->data["Hero"] = Hero::all()->toArray();
         $this->data["AbouteMe"] = AboutMe::all()->toArray();
+        $this->data["Experiences"] = Experiences::all()->toArray();
 
-        // dd($this->data["AbouteMe"]);
+        // dd($this->data["Experiences"]);
 
         return view("home", $this->data);
         
