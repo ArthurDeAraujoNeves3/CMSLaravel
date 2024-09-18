@@ -6,6 +6,7 @@ use App\Models\AboutMe;
 use App\Models\Experiences;
 use App\Models\General;
 use App\Models\Hero;
+use App\Models\Projects;
 use App\Models\Sections;
 use Illuminate\Http\Request;
 
@@ -29,8 +30,9 @@ class PortfolioController extends Controller {
         $this->data["Hero"] = Hero::all()->toArray();
         $this->data["AbouteMe"] = AboutMe::all()->toArray();
         $this->data["Experiences"] = Experiences::all()->toArray();
+        $this->data["Projects"] = Projects::all()->toArray();
 
-        // dd($this->data["Experiences"]);
+        // dd($this->data["Projects"]);
 
         return view("home", $this->data);
         

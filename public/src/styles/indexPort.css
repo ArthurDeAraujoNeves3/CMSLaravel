@@ -78,3 +78,14 @@ a {
     padding: 20px 0px;
 
 }
+
+.Project {
+
+    background-color: var(--bgP);
+
+}
+.Project > div > h5, p {
+
+    color: var(--textP);
+
+}

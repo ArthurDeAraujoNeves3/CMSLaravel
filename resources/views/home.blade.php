@@ -96,7 +96,7 @@
 
         </section> {{--Sobre mim--}}
 
-        <section id="{{ $sections[2]["name"] }}">
+        <section id="{{ $sections[2]["name"] }}" class="py-3">
 
             <article class="container d-flex flex-column align-items-start">
 
@@ -151,13 +151,69 @@
 
                       </div>
 
-                    </div>
+                    </div> {{--Conteúdo--}}
 
                 </div> {{--Experiências--}}
                 
             </article>
 
         </section> {{--Experiências--}}
+
+        <section id="{{ $sections[3]["name"] }}" class="Secao">
+
+            <article class="container d-flex flex-column align-items-start">
+
+                <section class="d-flex flex-column">
+                
+                    <p class="title textHightlight fs-4 m-0">{{ $sections[3]["name"] }}</p>
+                    
+                </section> {{--Título--}}
+
+                <section>
+                
+                    @foreach ($Projects as $Project)
+
+                        @component("Components.commons.Project")
+                        
+                            @slot("image")
+
+                                {{ $Project["imageUrl"] }}
+
+                            @endslot
+
+                            @slot("name")
+
+                                {{ $Project["name"] }}
+
+                            @endslot
+
+                            @slot("description")
+
+                                {{ $Project["description"] }}
+
+                            @endslot
+
+                            @slot("github")
+
+                                {{ $Project["github"] }}
+
+                            @endslot
+
+                            @slot("website")
+
+                                {{ $Project["webSite"] }}
+
+                            @endslot
+
+                        @endcomponent
+
+                    @endforeach
+                    
+                </section> {{--Projetos--}}
+                
+            </article>
+
+        </section> {{--Projetos--}}
 
     </main>
 
