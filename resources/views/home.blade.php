@@ -21,13 +21,13 @@
           
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
 
-            <span class="navbar-toggler-icon"></span>
+                <span class="navbar-toggler-icon"></span>
 
             </button>
 
             <div id="navbarNav">
 
-                <ul class="navbar-nav d-flex align-ites-center gap-3">
+                <ul class="navbar-nav d-none d-lg-flex align-ites-center gap-3">
 
                     @foreach($sections as $section) 
 
@@ -47,7 +47,7 @@
 
     <main>
 
-        <section id="{{ $sections[0]["name"] }}" class="container d-flex align-items-center justify-content-between">
+        <section id="{{ $sections[0]["name"] }}" class="container d-flex flex-column flex-lg-row align-items-center justify-content-between">
 
             <article class="d-flex flex-column gap-4 py-3">
 
@@ -65,7 +65,7 @@
 
             <figure>
 
-                <img src={{ asset("storage/" . $Hero[0]["imageUrl"]) }} alt="Ilustração" draggable="false" loading="eager" />
+                <img class="img-fluid" src={{ asset("storage/" . $Hero[0]["imageUrl"]) }} alt="Ilustração" draggable="false" loading="eager" />
 
             </figure> {{--Ilustração--}}
 
@@ -106,7 +106,7 @@
                     
                 </section> {{--Título--}}
 
-                <div class="row w-100">
+                <div class="row flex-sm-row flex-column w-100">
 
                     <div class="col-4">
 
@@ -169,7 +169,7 @@
                     
                 </section> {{--Título--}}
 
-                <section class="row gap-2">
+                <section class="row flex-column flex-sm-row gap-2">
                 
                     @foreach ($Projects as $Project)
 
