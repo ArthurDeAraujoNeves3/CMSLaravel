@@ -24,7 +24,8 @@ class HeroRequest extends FormRequest
         return [
             
             "welcomeMessage" => "required|max:100",
-            "expertise" => "required|max:80"
+            "expertise" => "required|max:80",
+            "image" => " nullable|image"
 
         ];
     }
@@ -37,7 +38,8 @@ class HeroRequest extends FormRequest
             "welcomeMessage.required" => "Preencha o campo acima",
             "welcomeMessage.max" => "Máximo de 100 caracteres",
             "expertise.required" => "Preencha o campo acima",
-            "expertise.max" => "Máximo de 80 caracteres"
+            "expertise.max" => "Máximo de 80 caracteres",
+            "image.image" => "Insira uma imagem válida",
 
         ];
 

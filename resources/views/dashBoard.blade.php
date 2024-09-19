@@ -29,7 +29,7 @@
                 </div>
             @endif {{--Mensagem de sucesso--}}
 
-            <form action="{{ route('dashboard.update', $Hero['id']) }}" method="post" class="Form">
+            <form action="{{ route('dashboard.update', $Hero['id']) }}" method="post" class="Form" enctype="multipart/form-data">
                 @method('put')
                 @csrf
 
@@ -66,8 +66,17 @@
                     <div class="h6">Imagem</div>
                     <article>
 
+                        <input type="file" name="image" />
+                        @error("image")
+
+                            <p class="textError">{{ $message }}</p>
+
+                        @enderror
+
                         <figure>
-                            <img src="{{ $Hero['imageUrl'] }}" alt="Ilustração do Hero" draggable="false" loading="lazy" />
+
+                            <img src="{{ asset("storage/" . $Hero['imageUrl']) }}" alt="Ilustração do Hero" draggable="false" loading="lazy" />
+
                         </figure>
 
                     </article>

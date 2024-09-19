@@ -49,7 +49,7 @@
 
         <section id="{{ $sections[0]["name"] }}" class="container d-flex align-items-center justify-content-between">
 
-            <article class="d-flex flex-column gap-4">
+            <article class="d-flex flex-column gap-4 py-3">
 
                 <section>
 
@@ -65,7 +65,7 @@
 
             <figure>
 
-                <img src={{ $Hero[0]["imageUrl"] }} alt="Ilustração" draggable="false" loading="eager" />
+                <img src={{ asset("storage/" . $Hero[0]["imageUrl"]) }} alt="Ilustração" draggable="false" loading="eager" />
 
             </figure> {{--Ilustração--}}
 
@@ -169,7 +169,7 @@
                     
                 </section> {{--Título--}}
 
-                <section>
+                <section class="row gap-2">
                 
                     @foreach ($Projects as $Project)
 

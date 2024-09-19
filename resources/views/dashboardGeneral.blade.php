@@ -49,7 +49,7 @@
                             <p class="textError">{{ $message }}</p>
                         @enderror
 
-                    </div> {{--Mensagem de boas-vindas--}}
+                    </div> {{--Nome--}}
 
                 </section> {{--Inputs--}}
 

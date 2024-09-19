@@ -56,7 +56,19 @@ class HeroController extends Controller {
         // dd($r->post());
         $welcomeMessage = $r->post()["welcomeMessage"];
         $expertise = $r->post()["expertise"];
-        $imageUrl = "";
+        
+        if ( $r->image ) {
+
+            $file = $r->image;
+            $path = $file->store("hero", "public");
+
+            Hero::select()->where("id", "=", $id)->update([
+
+                "imageUrl" => $path
+
+            ]);
+
+        };
         
         Hero::select()->where("id", "=", $id)->update([
 
