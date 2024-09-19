@@ -3,6 +3,7 @@
 use App\Http\Controllers\AboutMeController;
 use App\Http\Controllers\ExperiencesController;
 use App\Http\Controllers\ExpertiseEditController;
+use App\Http\Controllers\GeneralController;
 use App\Http\Controllers\HeroController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PortfolioController;
@@ -22,6 +23,8 @@ Route::controller(LoginController::class)->group(function () {
 });
 
 // Página admin
+// General
+Route::resource("/general", GeneralController::class)->middleware("auth");
 // Hero
 Route::resource("/dashboard", HeroController::class)->middleware("auth");
 // Sobre mim

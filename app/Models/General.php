@@ -10,4 +10,5 @@ class General extends Model
     use HasFactory;
     protected $table = "General";
     public $timestamps = false;
+    public $incrementing = false;
 }
