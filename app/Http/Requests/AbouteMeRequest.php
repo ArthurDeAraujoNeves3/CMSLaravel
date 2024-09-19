@@ -25,7 +25,7 @@ class AbouteMeRequest extends FormRequest
             
             "location" => "required|max:80",
             "description" => "required|max:500",
-            "pdf" => "required|file"
+            "pdf" => "nullable|file"
 
         ];
     }
